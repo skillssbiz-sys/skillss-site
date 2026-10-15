@@ -1,51 +1,217 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Skillss</title>
-<meta name="description" content="Skillss — экспорт медицинского оборудования и расходных материалов.">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:#1f2933;line-height:1.6;background:#f5f8fa}
-header{background:#fff;border-bottom:1px solid #e1e8ed}
-.wrap{max-width:960px;margin:0 auto;padding:0 20px}
-.nav{display:flex;justify-content:space-between;align-items:center;height:64px}
-.logo{font-size:1.4rem;font-weight:700;color:#0a7a8c}
-.nav a{color:#0a7a8c;text-decoration:none;font-weight:600}
-.hero{background:linear-gradient(135deg,#0a7a8c,#12a3b8);color:#fff;padding:80px 0;text-align:center}
-.hero h1{font-size:2.4rem;line-height:1.2;margin-bottom:16px}
-.hero p{font-size:1.15rem;max-width:640px;margin:0 auto 28px;opacity:.95}
-.btn{display:inline-block;background:#fff;color:#0a7a8c;padding:12px 28px;border-radius:6px;text-decoration:none;font-weight:700}
-section{padding:56px 0}
-h2{font-size:1.7rem;margin-bottom:24px;color:#0a5663;text-align:center}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
-.card{background:#fff;border:1px solid #e1e8ed;border-radius:10px;padding:24px}
-.card h3{margin-bottom:8px;color:#0a7a8c}
-#contact{background:#fff;text-align:center}
-#contact a{color:#0a7a8c;font-weight:700;font-size:1.2rem}
-footer{text-align:center;padding:24px;color:#6b7c88;font-size:.9rem}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Skillss</title>
+  <meta name="description" content="Skillss — export of medical equipment and supplies.">
+  <meta name="theme-color" content="#0b2a5b">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230b2a5b'/%3E%3Cpath d='M13 7h6v6h6v6h-6v6h-6v-6H7v-6h6z' fill='%2322d3ee'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header><div class="wrap nav"><span class="logo">Skillss</span><a href="#contact">Контакты</a></div></header>
-<div class="hero"><div class="wrap">
-<h1>Экспорт медицинского оборудования</h1>
-<p>Надёжные поставки медицинских изделий и расходных материалов для клиник, дистрибьюторов и лабораторий.</p>
-<a class="btn" href="#contact">Связаться с нами</a>
-</div></div>
-<section id="services"><div class="wrap">
-<h2>Наши услуги</h2>
-<div class="cards">
-<div class="card"><h3>Медицинские изделия</h3><p>Экспорт оборудования и медицинских устройств от проверенных производителей.</p></div>
-<div class="card"><h3>Расходные материалы</h3><p>Поставка расходных материалов и сопутствующих товаров для клиник и лабораторий.</p></div>
-<div class="card"><h3>Сопровождение поставок</h3><p>Подбор товара, документы и организация доставки до вашей страны.</p></div>
-</div></div></section>
-<section id="contact"><div class="wrap">
-<h2>Контакты</h2>
-<p>Напишите нам, и мы подготовим предложение под ваш запрос:</p>
-<p><a href="mailto:skillssbiz@gmail.com">skillssbiz@gmail.com</a></p>
-</div></section>
-<footer>&copy; 2026 Skillss. Все права защищены.</footer>
+  <a class="skip" href="#main" data-i18n="skip">Перейти к содержимому</a>
+
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="#top" aria-label="Skillss">
+        <svg class="brand__logo" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="currentColor"/><path d="M13 7h6v6h6v6h-6v6h-6v-6H7v-6h6z" fill="#22d3ee"/></svg>
+        <span>Skillss</span>
+      </a>
+      <button class="burger" id="burger" aria-expanded="false" aria-controls="menu" data-i18n-aria="menuToggle" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="menu" id="menu" aria-label="Main">
+        <ul>
+          <li><a href="#about" data-i18n="nav_about">О нас</a></li>
+          <li><a href="#products" data-i18n="nav_products">Продукция</a></li>
+          <li><a href="#why" data-i18n="nav_why">Почему мы</a></li>
+          <li><a href="#contact" data-i18n="nav_contact">Контакты</a></li>
+        </ul>
+        <div class="menu__actions">
+          <div class="lang" role="group" aria-label="Language">
+            <button type="button" class="lang__btn" data-lang="ru" aria-pressed="true">RU</button>
+            <button type="button" class="lang__btn" data-lang="en" aria-pressed="false">EN</button>
+          </div>
+          <a class="btn btn--accent" href="#contact" data-i18n="cta_quote">Запросить предложение</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="container hero__inner">
+        <div class="hero__text reveal">
+          <p class="eyebrow" data-i18n="hero_eyebrow">Экспорт медицинского оборудования</p>
+          <h1 data-i18n="hero_title">Надёжные поставки медицинского оборудования на международные рынки</h1>
+          <p class="lead" data-i18n="hero_lead">Skillss помогает клиникам, дистрибьюторам и закупочным организациям получать медицинские изделия и расходные материалы — с понятной коммуникацией на каждом этапе.</p>
+          <div class="hero__cta">
+            <a class="btn btn--accent btn--lg" href="#contact" data-i18n="cta_quote">Запросить предложение</a>
+            <a class="btn btn--ghost btn--lg" href="#products" data-i18n="cta_products">Смотреть продукцию</a>
+          </div>
+        </div>
+        <div class="hero__art reveal" aria-hidden="true">
+          <svg viewBox="0 0 320 320" role="img" focusable="false">
+            <circle cx="160" cy="160" r="150" class="art-ring"/>
+            <circle cx="160" cy="160" r="110" class="art-ring art-ring--2"/>
+            <rect x="130" y="70" width="60" height="180" rx="14" class="art-cross"/>
+            <rect x="70" y="130" width="180" height="60" rx="14" class="art-cross"/>
+            <path d="M40 160h60l15-30 25 60 20-45 15 15h105" class="art-pulse"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="container split">
+        <div class="reveal">
+          <p class="eyebrow" data-i18n="about_eyebrow">О нас</p>
+          <h2 id="about-title" data-i18n="about_title">Мост между производителями и покупателями</h2>
+        </div>
+        <div class="reveal">
+          <p data-i18n="about_p1">Skillss занимается экспортом медицинского оборудования и расходных материалов. Мы подбираем продукцию под задачи заказчика, координируем документы и организуем доставку.</p>
+          <p data-i18n="about_p2">Наша цель — сделать процесс закупки простым, прозрачным и предсказуемым для партнёров в разных странах.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="products" aria-labelledby="products-title">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow" data-i18n="products_eyebrow">Продукция</p>
+          <h2 id="products-title" data-i18n="products_title">Категории оборудования</h2>
+          <p class="muted" data-i18n="products_sub">Примеры направлений. Конкретный ассортимент уточняется по запросу.</p>
+        </div>
+        <div class="grid">
+          <article class="card reveal">
+            <div class="icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M6 24h8l5-10 8 20 6-14 3 4h6"/><rect x="4" y="8" width="40" height="32" rx="5"/></svg></div>
+            <h3 data-i18n="p1_title">Диагностическое оборудование</h3>
+            <p data-i18n="p1_text">Устройства для диагностики и обследования пациентов.</p>
+            <a class="card__link" href="#contact" data-product="diagnostic" data-i18n="card_ask">Запросить →</a>
+          </article>
+          <article class="card reveal">
+            <div class="icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M10 38 30 18"/><path d="M30 18c3-6 8-8 10-8 0 2-2 7-8 10z"/><path d="M8 40l4-1-3-3z"/></svg></div>
+            <h3 data-i18n="p2_title">Хирургические инструменты</h3>
+            <p data-i18n="p2_text">Инструменты и наборы для хирургических и амбулаторных процедур.</p>
+            <a class="card__link" href="#contact" data-product="surgical" data-i18n="card_ask">Запросить →</a>
+          </article>
+          <article class="card reveal">
+            <div class="icon" aria-hidden="true"><svg viewBox="0 0 48 48"><rect x="12" y="18" width="24" height="24" rx="4"/><path d="M18 18v-6h12v6"/><path d="M24 25v10M19 30h10"/></svg></div>
+            <h3 data-i18n="p3_title">Расходные материалы</h3>
+            <p data-i18n="p3_text">Одноразовые изделия и материалы для ежедневной работы клиник.</p>
+            <a class="card__link" href="#contact" data-product="consumables" data-i18n="card_ask">Запросить →</a>
+          </article>
+          <article class="card reveal">
+            <div class="icon" aria-hidden="true"><svg viewBox="0 0 48 48"><rect x="6" y="8" width="36" height="26" rx="4"/><path d="M12 22h6l3-6 5 12 3-6h7"/><path d="M18 42h12M24 34v8"/></svg></div>
+            <h3 data-i18n="p4_title">Мониторинг пациента</h3>
+            <p data-i18n="p4_text">Оборудование для наблюдения за состоянием пациентов.</p>
+            <a class="card__link" href="#contact" data-product="monitoring" data-i18n="card_ask">Запросить →</a>
+          </article>
+          <article class="card reveal">
+            <div class="icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M16 7c-5 0-9 3-9 9 0 5 3 8 4 13 1 6 2 12 5 12s3-8 4-10c1-2 3-2 4 0 1 2 1 10 4 10s4-6 5-12c1-5 4-8 4-13 0-6-4-9-9-9-3 0-4 1-6 1s-3-1-6-1z"/></svg></div>
+            <h3 data-i18n="p5_title">Стоматология и имплантология</h3>
+            <p data-i18n="p5_text">Материалы и принадлежности для стоматологических кабинетов.</p>
+            <a class="card__link" href="#contact" data-product="dental" data-i18n="card_ask">Запросить →</a>
+          </article>
+          <article class="card card--cta reveal">
+            <h3 data-i18n="p6_title">Нужно что-то другое?</h3>
+            <p data-i18n="p6_text">Расскажите, что вы ищете — мы постараемся подобрать подходящее решение.</p>
+            <a class="btn btn--accent" href="#contact" data-i18n="cta_quote">Запросить предложение</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="why" aria-labelledby="why-title">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow" data-i18n="why_eyebrow">Почему мы</p>
+          <h2 id="why-title" data-i18n="why_title">Что вы получаете, работая с Skillss</h2>
+        </div>
+        <div class="grid grid--4">
+          <div class="feature reveal">
+            <span class="feature__num" aria-hidden="true">01</span>
+            <h3 data-i18n="w1_title">Тщательный подбор</h3>
+            <p data-i18n="w1_text">Внимательный выбор поставщиков и продукции под ваши требования.</p>
+          </div>
+          <div class="feature reveal">
+            <span class="feature__num" aria-hidden="true">02</span>
+            <h3 data-i18n="w2_title">Поддержка с документами</h3>
+            <p data-i18n="w2_text">Помощь в подготовке и оформлении сопроводительной документации.</p>
+          </div>
+          <div class="feature reveal">
+            <span class="feature__num" aria-hidden="true">03</span>
+            <h3 data-i18n="w3_title">Логистика</h3>
+            <p data-i18n="w3_text">Организация упаковки и доставки до согласованного пункта назначения.</p>
+          </div>
+          <div class="feature reveal">
+            <span class="feature__num" aria-hidden="true">04</span>
+            <h3 data-i18n="w4_title">Быстрая связь</h3>
+            <p data-i18n="w4_text">Понятная и оперативная коммуникация на русском и английском языках.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--dark" id="contact" aria-labelledby="contact-title">
+      <div class="container split split--form">
+        <div class="reveal">
+          <p class="eyebrow eyebrow--light" data-i18n="contact_eyebrow">Контакты</p>
+          <h2 id="contact-title" data-i18n="contact_title">Запросить коммерческое предложение</h2>
+          <p data-i18n="contact_text">Заполните форму, и мы свяжемся с вами. Или напишите нам напрямую:</p>
+          <p><a class="mail" href="mailto:skillssbiz@gmail.com">skillssbiz@gmail.com</a></p>
+        </div>
+        <!-- PLACEHOLDER FORM: there is no backend. On submit we only validate on the client
+             and show a success message; nothing is sent or stored anywhere. -->
+        <form class="form reveal" id="quote-form" novalidate>
+          <div class="field">
+            <label for="f-name" data-i18n="f_name">Имя</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required>
+            <span class="err" data-err="name" role="alert"></span>
+          </div>
+          <div class="field">
+            <label for="f-email" data-i18n="f_email">Email</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required>
+            <span class="err" data-err="email" role="alert"></span>
+          </div>
+          <div class="field">
+            <label for="f-company" data-i18n="f_company">Компания</label>
+            <input id="f-company" name="company" type="text" autocomplete="organization">
+          </div>
+          <div class="field">
+            <label for="f-product" data-i18n="f_product">Интересующая продукция</label>
+            <select id="f-product" name="product">
+              <option value="" data-i18n="opt_choose">Выберите категорию</option>
+              <option value="diagnostic" data-i18n="p1_title">Диагностическое оборудование</option>
+              <option value="surgical" data-i18n="p2_title">Хирургические инструменты</option>
+              <option value="consumables" data-i18n="p3_title">Расходные материалы</option>
+              <option value="monitoring" data-i18n="p4_title">Мониторинг пациента</option>
+              <option value="dental" data-i18n="p5_title">Стоматология и имплантология</option>
+              <option value="other" data-i18n="opt_other">Другое</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-message" data-i18n="f_message">Сообщение</label>
+            <textarea id="f-message" name="message" rows="4" required></textarea>
+            <span class="err" data-err="message" role="alert"></span>
+          </div>
+          <button class="btn btn--accent btn--lg" type="submit" data-i18n="f_submit">Отправить запрос</button>
+          <p class="success" id="form-success" role="status" hidden data-i18n="f_success">Спасибо! Ваш запрос принят (демо-режим: данные пока никуда не отправляются).</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© <span id="year">2026</span> Skillss. <span data-i18n="footer_rights">Все права защищены.</span></p>
+      <p><a href="mailto:skillssbiz@gmail.com">skillssbiz@gmail.com</a> · <a class="footer__admin" href="admin/index.html" data-i18n="footer_admin">Вход для администратора</a></p>
+    </div>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

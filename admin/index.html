@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Skillss</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="admin-body">
+  <main class="login">
+    <div class="login__card">
+      <div class="login__top">
+        <span class="brand"><svg class="brand__logo" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="currentColor"/><path d="M13 7h6v6h6v6h-6v6h-6v-6H7v-6h6z" fill="#22d3ee"/></svg>Skillss</span>
+        <div class="lang" role="group" aria-label="Language">
+          <button type="button" class="lang__btn" data-lang="ru" aria-pressed="true">RU</button>
+          <button type="button" class="lang__btn" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+      </div>
+      <h1 data-i18n="a_title" style="font-size:1.6rem">Вход для администратора</h1>
+      <p class="muted" data-i18n="a_sub">Войдите, чтобы открыть панель управления.</p>
+      <p class="notice" role="note" data-i18n="a_notice">Это демонстрационная заглушка без реальной защиты. Для настоящей аутентификации нужен серверный бэкенд. Не вводите здесь реальные пароли.</p>
+      <!-- DEMO ONLY: any non-empty email/password sets a sessionStorage flag. No real security. -->
+      <form id="login-form" novalidate>
+        <div class="field">
+          <label for="a-email" data-i18n="a_email">Email</label>
+          <input id="a-email" type="email" autocomplete="username" required>
+        </div>
+        <div class="field">
+          <label for="a-pass" data-i18n="a_password">Пароль</label>
+          <input id="a-pass" type="password" autocomplete="current-password" required>
+        </div>
+        <span class="err" id="login-err" role="alert"></span>
+        <button class="btn btn--accent btn--lg" type="submit" style="width:100%;margin-top:8px" data-i18n="a_login">Войти</button>
+      </form>
+      <a class="login__back" href="../index.html" data-i18n="a_back">← На сайт</a>
+    </div>
+  </main>
+  <script src="../js/i18n.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>
