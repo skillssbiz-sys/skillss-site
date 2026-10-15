@@ -1,0 +1,54 @@
+{
+  "email": "skillssbiz@gmail.com",
+  "phone": "",
+  "telegram": "https://t.me/Skillss7_bot",
+  "address": {
+    "ru": "",
+    "en": ""
+  },
+  "hero": {
+    "title": {
+      "ru": "Надёжные поставки медицинского оборудования на международные рынки",
+      "en": "Reliable medical equipment supply for international markets"
+    },
+    "subtitle": {
+      "ru": "Skillss помогает клиникам, дистрибьюторам и закупочным организациям получать медицинские изделия и расходные материалы — с понятной коммуникацией на каждом этапе.",
+      "en": "Skillss helps clinics, distributors and procurement organizations source medical devices and supplies, with clear communication at every step."
+    }
+  },
+  "testimonials": [
+    {
+      "example": true,
+      "quote": {
+        "ru": "Пример отзыва: чёткая коммуникация и аккуратно подготовленные документы.",
+        "en": "Example quote: clear communication and carefully prepared documents."
+      },
+      "author": {
+        "ru": "Имя клиента, компания",
+        "en": "Customer name, company"
+      }
+    },
+    {
+      "example": true,
+      "quote": {
+        "ru": "Пример отзыва: заказ был организован понятно и в согласованные сроки.",
+        "en": "Example quote: the order was organized clearly and on the agreed schedule."
+      },
+      "author": {
+        "ru": "Имя клиента, компания",
+        "en": "Customer name, company"
+      }
+    },
+    {
+      "example": true,
+      "quote": {
+        "ru": "Пример отзыва: удобно, что все этапы — от запроса до отгрузки — прозрачны.",
+        "en": "Example quote: it is convenient that every stage, from inquiry to shipment, is transparent."
+      },
+      "author": {
+        "ru": "Имя клиента, компания",
+        "en": "Customer name, company"
+      }
+    }
+  ]
+}

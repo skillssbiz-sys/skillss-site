@@ -7,6 +7,9 @@
   <meta name="description" content="Skillss — export of medical equipment and supplies.">
   <meta name="theme-color" content="#0b2a5b">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230b2a5b'/%3E%3Cpath d='M13 7h6v6h6v6h-6v6h-6v-6H7v-6h6z' fill='%2322d3ee'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -18,7 +21,7 @@
         <svg class="brand__logo" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="currentColor"/><path d="M13 7h6v6h6v6h-6v6h-6v-6H7v-6h6z" fill="#22d3ee"/></svg>
         <span>Skillss</span>
       </a>
-      <button class="burger" id="burger" aria-expanded="false" aria-controls="menu" data-i18n-aria="menuToggle" aria-label="Меню">
+      <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu" data-i18n-aria="menuToggle" aria-label="Меню">
         <span></span><span></span><span></span>
       </button>
       <nav class="menu" id="menu" aria-label="Main">
@@ -26,6 +29,7 @@
           <li><a href="#about" data-i18n="nav_about">О нас</a></li>
           <li><a href="#products" data-i18n="nav_products">Продукция</a></li>
           <li><a href="#why" data-i18n="nav_why">Почему мы</a></li>
+          <li><a href="#how" data-i18n="nav_how">Как это работает</a></li>
           <li><a href="#contact" data-i18n="nav_contact">Контакты</a></li>
         </ul>
         <div class="menu__actions">
@@ -39,21 +43,26 @@
     </div>
   </header>
 
+  <div class="preview-badge" id="preview-badge" hidden>
+    <span data-i18n="preview_badge">Режим предпросмотра: показаны локальные изменения из админ-панели.</span>
+    <button type="button" id="preview-reset" data-i18n="preview_reset">Сбросить</button>
+  </div>
+
   <main id="main">
     <section class="hero" id="top">
       <div class="hero__bg" aria-hidden="true"></div>
       <div class="container hero__inner">
         <div class="hero__text reveal">
           <p class="eyebrow" data-i18n="hero_eyebrow">Экспорт медицинского оборудования</p>
-          <h1 data-i18n="hero_title">Надёжные поставки медицинского оборудования на международные рынки</h1>
-          <p class="lead" data-i18n="hero_lead">Skillss помогает клиникам, дистрибьюторам и закупочным организациям получать медицинские изделия и расходные материалы — с понятной коммуникацией на каждом этапе.</p>
+          <h1 id="hero-title">Надёжные поставки медицинского оборудования на международные рынки</h1>
+          <p class="lead" id="hero-sub">Skillss помогает клиникам, дистрибьюторам и закупочным организациям получать медицинские изделия и расходные материалы — с понятной коммуникацией на каждом этапе.</p>
           <div class="hero__cta">
             <a class="btn btn--accent btn--lg" href="#contact" data-i18n="cta_quote">Запросить предложение</a>
             <a class="btn btn--ghost btn--lg" href="#products" data-i18n="cta_products">Смотреть продукцию</a>
           </div>
         </div>
         <div class="hero__art reveal" aria-hidden="true">
-          <svg viewBox="0 0 320 320" role="img" focusable="false">
+          <svg viewBox="0 0 320 320" focusable="false">
             <circle cx="160" cy="160" r="150" class="art-ring"/>
             <circle cx="160" cy="160" r="110" class="art-ring art-ring--2"/>
             <rect x="130" y="70" width="60" height="180" rx="14" class="art-cross"/>
@@ -71,8 +80,8 @@
           <h2 id="about-title" data-i18n="about_title">Мост между производителями и покупателями</h2>
         </div>
         <div class="reveal">
-          <p data-i18n="about_p1">Skillss занимается экспортом медицинского оборудования и расходных материалов. Мы подбираем продукцию под задачи заказчика, координируем документы и организуем доставку.</p>
-          <p data-i18n="about_p2">Наша цель — сделать процесс закупки простым, прозрачным и предсказуемым для партнёров в разных странах.</p>
+          <p data-i18n="about_p1">Skillss занимается экспортом медицинского оборудования и расходных материалов.</p>
+          <p data-i18n="about_p2">Наша цель — сделать процесс закупки простым, прозрачным и предсказуемым.</p>
         </div>
       </div>
     </section>
@@ -84,43 +93,8 @@
           <h2 id="products-title" data-i18n="products_title">Категории оборудования</h2>
           <p class="muted" data-i18n="products_sub">Примеры направлений. Конкретный ассортимент уточняется по запросу.</p>
         </div>
-        <div class="grid">
-          <article class="card reveal">
-            <div class="icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M6 24h8l5-10 8 20 6-14 3 4h6"/><rect x="4" y="8" width="40" height="32" rx="5"/></svg></div>
-            <h3 data-i18n="p1_title">Диагностическое оборудование</h3>
-            <p data-i18n="p1_text">Устройства для диагностики и обследования пациентов.</p>
-            <a class="card__link" href="#contact" data-product="diagnostic" data-i18n="card_ask">Запросить →</a>
-          </article>
-          <article class="card reveal">
-            <div class="icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M10 38 30 18"/><path d="M30 18c3-6 8-8 10-8 0 2-2 7-8 10z"/><path d="M8 40l4-1-3-3z"/></svg></div>
-            <h3 data-i18n="p2_title">Хирургические инструменты</h3>
-            <p data-i18n="p2_text">Инструменты и наборы для хирургических и амбулаторных процедур.</p>
-            <a class="card__link" href="#contact" data-product="surgical" data-i18n="card_ask">Запросить →</a>
-          </article>
-          <article class="card reveal">
-            <div class="icon" aria-hidden="true"><svg viewBox="0 0 48 48"><rect x="12" y="18" width="24" height="24" rx="4"/><path d="M18 18v-6h12v6"/><path d="M24 25v10M19 30h10"/></svg></div>
-            <h3 data-i18n="p3_title">Расходные материалы</h3>
-            <p data-i18n="p3_text">Одноразовые изделия и материалы для ежедневной работы клиник.</p>
-            <a class="card__link" href="#contact" data-product="consumables" data-i18n="card_ask">Запросить →</a>
-          </article>
-          <article class="card reveal">
-            <div class="icon" aria-hidden="true"><svg viewBox="0 0 48 48"><rect x="6" y="8" width="36" height="26" rx="4"/><path d="M12 22h6l3-6 5 12 3-6h7"/><path d="M18 42h12M24 34v8"/></svg></div>
-            <h3 data-i18n="p4_title">Мониторинг пациента</h3>
-            <p data-i18n="p4_text">Оборудование для наблюдения за состоянием пациентов.</p>
-            <a class="card__link" href="#contact" data-product="monitoring" data-i18n="card_ask">Запросить →</a>
-          </article>
-          <article class="card reveal">
-            <div class="icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M16 7c-5 0-9 3-9 9 0 5 3 8 4 13 1 6 2 12 5 12s3-8 4-10c1-2 3-2 4 0 1 2 1 10 4 10s4-6 5-12c1-5 4-8 4-13 0-6-4-9-9-9-3 0-4 1-6 1s-3-1-6-1z"/></svg></div>
-            <h3 data-i18n="p5_title">Стоматология и имплантология</h3>
-            <p data-i18n="p5_text">Материалы и принадлежности для стоматологических кабинетов.</p>
-            <a class="card__link" href="#contact" data-product="dental" data-i18n="card_ask">Запросить →</a>
-          </article>
-          <article class="card card--cta reveal">
-            <h3 data-i18n="p6_title">Нужно что-то другое?</h3>
-            <p data-i18n="p6_text">Расскажите, что вы ищете — мы постараемся подобрать подходящее решение.</p>
-            <a class="btn btn--accent" href="#contact" data-i18n="cta_quote">Запросить предложение</a>
-          </article>
-        </div>
+        <div class="chips" id="chips" role="group" aria-label="Categories"></div>
+        <div class="grid" id="product-grid" aria-live="polite"></div>
       </div>
     </section>
 
@@ -131,27 +105,36 @@
           <h2 id="why-title" data-i18n="why_title">Что вы получаете, работая с Skillss</h2>
         </div>
         <div class="grid grid--4">
-          <div class="feature reveal">
-            <span class="feature__num" aria-hidden="true">01</span>
-            <h3 data-i18n="w1_title">Тщательный подбор</h3>
-            <p data-i18n="w1_text">Внимательный выбор поставщиков и продукции под ваши требования.</p>
-          </div>
-          <div class="feature reveal">
-            <span class="feature__num" aria-hidden="true">02</span>
-            <h3 data-i18n="w2_title">Поддержка с документами</h3>
-            <p data-i18n="w2_text">Помощь в подготовке и оформлении сопроводительной документации.</p>
-          </div>
-          <div class="feature reveal">
-            <span class="feature__num" aria-hidden="true">03</span>
-            <h3 data-i18n="w3_title">Логистика</h3>
-            <p data-i18n="w3_text">Организация упаковки и доставки до согласованного пункта назначения.</p>
-          </div>
-          <div class="feature reveal">
-            <span class="feature__num" aria-hidden="true">04</span>
-            <h3 data-i18n="w4_title">Быстрая связь</h3>
-            <p data-i18n="w4_text">Понятная и оперативная коммуникация на русском и английском языках.</p>
-          </div>
+          <div class="feature reveal"><span class="feature__num" aria-hidden="true">01</span><h3 data-i18n="w1_title">Тщательный подбор</h3><p data-i18n="w1_text"></p></div>
+          <div class="feature reveal"><span class="feature__num" aria-hidden="true">02</span><h3 data-i18n="w2_title">Поддержка с документами</h3><p data-i18n="w2_text"></p></div>
+          <div class="feature reveal"><span class="feature__num" aria-hidden="true">03</span><h3 data-i18n="w3_title">Логистика</h3><p data-i18n="w3_text"></p></div>
+          <div class="feature reveal"><span class="feature__num" aria-hidden="true">04</span><h3 data-i18n="w4_title">Быстрая связь</h3><p data-i18n="w4_text"></p></div>
         </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="how" aria-labelledby="how-title">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow" data-i18n="how_eyebrow">Как это работает</p>
+          <h2 id="how-title" data-i18n="how_title">Четыре простых шага</h2>
+        </div>
+        <ol class="steps">
+          <li class="step reveal"><span class="step__n" aria-hidden="true">1</span><h3 data-i18n="s1_title">Запрос</h3><p data-i18n="s1_text"></p></li>
+          <li class="step reveal"><span class="step__n" aria-hidden="true">2</span><h3 data-i18n="s2_title">Предложение</h3><p data-i18n="s2_text"></p></li>
+          <li class="step reveal"><span class="step__n" aria-hidden="true">3</span><h3 data-i18n="s3_title">Документы и договор</h3><p data-i18n="s3_text"></p></li>
+          <li class="step reveal"><span class="step__n" aria-hidden="true">4</span><h3 data-i18n="s4_title">Отгрузка</h3><p data-i18n="s4_text"></p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="testimonials" aria-labelledby="test-title">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow" data-i18n="test_eyebrow">Отзывы</p>
+          <h2 id="test-title" data-i18n="test_title">Отзывы клиентов</h2>
+        </div>
+        <div class="grid" id="testimonial-grid"></div>
       </div>
     </section>
 
@@ -161,44 +144,50 @@
           <p class="eyebrow eyebrow--light" data-i18n="contact_eyebrow">Контакты</p>
           <h2 id="contact-title" data-i18n="contact_title">Запросить коммерческое предложение</h2>
           <p data-i18n="contact_text">Заполните форму, и мы свяжемся с вами. Или напишите нам напрямую:</p>
-          <p><a class="mail" href="mailto:skillssbiz@gmail.com">skillssbiz@gmail.com</a></p>
+          <ul class="contact-list">
+            <li><span class="contact-list__k" data-i18n="lbl_email">Email</span> <a class="mail" id="c-email" href="mailto:skillssbiz@gmail.com">skillssbiz@gmail.com</a></li>
+            <li id="c-phone-row" hidden><span class="contact-list__k" data-i18n="lbl_phone">Телефон</span> <a id="c-phone" href="#"></a></li>
+            <li id="c-address-row" hidden><span class="contact-list__k" data-i18n="lbl_address">Адрес</span> <span id="c-address"></span></li>
+          </ul>
+          <a class="btn btn--tg btn--lg" id="c-telegram" href="https://t.me/Skillss7_bot" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.5 3.3 2.8 10.5c-.9.4-.9 1.1-.2 1.3l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.4l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.8c.3-1.2-.5-1.8-1.3-1.4zM9 13.2l9.1-5.7c.4-.3.8-.1.5.2l-7.4 6.7-.3 3.1-1.9-4.3z" fill="currentColor"/></svg><span data-i18n="tg_btn">Написать в Telegram</span></a>
         </div>
-        <!-- PLACEHOLDER FORM: there is no backend. On submit we only validate on the client
-             and show a success message; nothing is sent or stored anywhere. -->
         <form class="form reveal" id="quote-form" novalidate>
-          <div class="field">
-            <label for="f-name" data-i18n="f_name">Имя</label>
-            <input id="f-name" name="name" type="text" autocomplete="name" required>
-            <span class="err" data-err="name" role="alert"></span>
+          <!-- Honeypot for spam bots (FormSubmit ignores submissions where _honey is filled). Hidden from humans. -->
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
+          <div class="row2">
+            <div class="field">
+              <label for="f-name" data-i18n="f_name">Имя</label>
+              <input id="f-name" name="name" type="text" autocomplete="name" required>
+              <span class="err" data-err="name" role="alert"></span>
+            </div>
+            <div class="field">
+              <label for="f-email" data-i18n="f_email">Email</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" required>
+              <span class="err" data-err="email" role="alert"></span>
+            </div>
           </div>
-          <div class="field">
-            <label for="f-email" data-i18n="f_email">Email</label>
-            <input id="f-email" name="email" type="email" autocomplete="email" required>
-            <span class="err" data-err="email" role="alert"></span>
-          </div>
-          <div class="field">
-            <label for="f-company" data-i18n="f_company">Компания</label>
-            <input id="f-company" name="company" type="text" autocomplete="organization">
+          <div class="row2">
+            <div class="field">
+              <label for="f-company" data-i18n="f_company">Компания</label>
+              <input id="f-company" name="company" type="text" autocomplete="organization">
+            </div>
+            <div class="field">
+              <label for="f-country" data-i18n="f_country">Страна</label>
+              <input id="f-country" name="country" type="text" autocomplete="country-name">
+            </div>
           </div>
           <div class="field">
             <label for="f-product" data-i18n="f_product">Интересующая продукция</label>
-            <select id="f-product" name="product">
-              <option value="" data-i18n="opt_choose">Выберите категорию</option>
-              <option value="diagnostic" data-i18n="p1_title">Диагностическое оборудование</option>
-              <option value="surgical" data-i18n="p2_title">Хирургические инструменты</option>
-              <option value="consumables" data-i18n="p3_title">Расходные материалы</option>
-              <option value="monitoring" data-i18n="p4_title">Мониторинг пациента</option>
-              <option value="dental" data-i18n="p5_title">Стоматология и имплантология</option>
-              <option value="other" data-i18n="opt_other">Другое</option>
-            </select>
+            <select id="f-product" name="product"></select>
           </div>
           <div class="field">
             <label for="f-message" data-i18n="f_message">Сообщение</label>
             <textarea id="f-message" name="message" rows="4" required></textarea>
             <span class="err" data-err="message" role="alert"></span>
           </div>
-          <button class="btn btn--accent btn--lg" type="submit" data-i18n="f_submit">Отправить запрос</button>
-          <p class="success" id="form-success" role="status" hidden data-i18n="f_success">Спасибо! Ваш запрос принят (демо-режим: данные пока никуда не отправляются).</p>
+          <button class="btn btn--accent btn--lg" id="f-submit" type="submit" data-i18n="f_submit">Отправить запрос</button>
+          <p class="success" id="form-success" role="status" hidden data-i18n="f_success"></p>
+          <p class="fail" id="form-error" role="alert" hidden><span data-i18n="f_error"></span> <a id="form-mailto" href="mailto:skillssbiz@gmail.com" data-i18n="f_mailto">Написать по email</a></p>
         </form>
       </div>
     </section>
@@ -207,11 +196,12 @@
   <footer class="footer">
     <div class="container footer__inner">
       <p>© <span id="year">2026</span> Skillss. <span data-i18n="footer_rights">Все права защищены.</span></p>
-      <p><a href="mailto:skillssbiz@gmail.com">skillssbiz@gmail.com</a> · <a class="footer__admin" href="admin/index.html" data-i18n="footer_admin">Вход для администратора</a></p>
+      <p><a href="mailto:skillssbiz@gmail.com" data-contact-email>skillssbiz@gmail.com</a> · <a class="footer__tg" id="f-telegram" href="https://t.me/Skillss7_bot" target="_blank" rel="noopener"><span data-i18n="tg_footer">Telegram-бот</span></a> · <a class="footer__admin" href="admin/index.html" data-i18n="footer_admin">Вход для администратора</a></p>
     </div>
   </footer>
 
   <script src="js/i18n.js"></script>
+  <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

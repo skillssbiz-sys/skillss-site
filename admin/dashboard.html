@@ -5,19 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   <title>Skillss</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
   <link rel="stylesheet" href="../css/style.css">
   <script>
-    // DEMO ONLY redirect guard (runs early to avoid flashing content). Not real security.
-    try { if (sessionStorage.getItem('skillss-admin') !== '1') location.replace('index.html'); } catch (e) { location.replace('index.html'); }
+    // Client-side redirect guard (NOT real security). Runs early to avoid flashing content.
+    (function () {
+      var ok = false;
+      try { var t = sessionStorage.getItem('skillss_admin_session'); ok = !!t && /^\d+:[0-9a-f]{32}$/.test(t) && Date.now() - parseInt(t, 10) < 8 * 3600 * 1000; } catch (e) {}
+      if (!ok) location.replace('index.html');
+    })();
   </script>
 </head>
 <body class="admin-body">
   <div class="dash">
     <aside class="side">
       <span class="brand"><svg class="brand__logo" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="currentColor"/><path d="M13 7h6v6h6v6h-6v6h-6v-6H7v-6h6z" fill="#22d3ee"/></svg>Skillss</span>
-      <nav aria-label="Admin" id="side-nav">
-        <button type="button" class="side__link" data-tab="products" aria-current="page" data-i18n="d_products">Продукция</button>
-        <button type="button" class="side__link" data-tab="inquiries" data-i18n="d_inquiries">Запросы</button>
+      <nav class="side__nav" aria-label="Admin">
+        <button type="button" class="side__link" data-tab="quotes" aria-current="page" data-i18n="d_quotes">Запросы</button>
+        <button type="button" class="side__link" data-tab="products" data-i18n="d_products">Продукция</button>
         <button type="button" class="side__link" data-tab="settings" data-i18n="d_settings">Настройки</button>
       </nav>
       <div class="side__spacer"></div>
@@ -32,23 +39,93 @@
           <button type="button" class="lang__btn" data-lang="en" aria-pressed="false">EN</button>
         </div>
       </div>
-      <p class="notice" role="note" data-i18n="d_demo">Демо-режим: данные не сохраняются, защиты нет.</p>
-      <section class="panel is-active" id="panel-products">
-        <h2 data-i18n="d_products_empty">Пока нет товаров</h2>
-        <p data-i18n="d_products_hint">Здесь позже можно будет добавлять и редактировать продукцию.</p>
-        <button class="btn btn--navy" type="button" disabled data-i18n="d_add">Добавить товар (скоро)</button>
+      <p class="notice" role="note" data-i18n="a_notice"></p>
+      <p class="notice notice--info" role="note" data-i18n="d_limit"></p>
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+      <section class="tab is-active" id="tab-quotes" aria-labelledby="h-quotes">
+        <div class="tab__head"><h2 id="h-quotes" data-i18n="q_title">Запросы</h2>
+          <div class="btnrow">
+            <button class="btn btn--sm btn--navy" type="button" id="q-csv" data-i18n="q_csv">CSV</button>
+            <button class="btn btn--sm btn--navy" type="button" id="q-json" data-i18n="q_json">JSON</button>
+          </div></div>
+        <p class="muted" data-i18n="q_note"></p>
+        <div id="q-list" class="list"></div>
       </section>
-      <section class="panel" id="panel-inquiries">
-        <h2 data-i18n="d_inq_empty">Пока нет запросов</h2>
-        <p data-i18n="d_inq_hint">Запросы клиентов появятся здесь после подключения бэкенда.</p>
+
+      <section class="tab" id="tab-products" aria-labelledby="h-products">
+        <div class="tab__head"><h2 id="h-products" data-i18n="p_title">Продукция</h2>
+          <div class="btnrow">
+            <button class="btn btn--sm btn--accent" type="button" id="p-add" data-i18n="p_add">Добавить</button>
+            <button class="btn btn--sm btn--navy" type="button" id="p-export" data-i18n="p_export">Экспорт</button>
+            <button class="btn btn--sm btn--light" type="button" id="p-reset" data-i18n="p_reset">Сбросить</button>
+          </div></div>
+        <form class="panelform" id="p-form" hidden novalidate>
+          <h3 id="p-form-title" data-i18n="p_form_add">Новая позиция</h3>
+          <input type="hidden" id="p-id">
+          <div class="field"><label for="p-cat" data-i18n="p_cat">Категория</label><select id="p-cat"></select></div>
+          <div class="row2">
+            <div class="field"><label for="p-name-ru" data-i18n="p_name_ru">Название (RU)</label><input id="p-name-ru" type="text"></div>
+            <div class="field"><label for="p-name-en" data-i18n="p_name_en">Название (EN)</label><input id="p-name-en" type="text"></div>
+          </div>
+          <div class="row2">
+            <div class="field"><label for="p-desc-ru" data-i18n="p_desc_ru">Описание (RU)</label><textarea id="p-desc-ru" rows="3"></textarea></div>
+            <div class="field"><label for="p-desc-en" data-i18n="p_desc_en">Описание (EN)</label><textarea id="p-desc-en" rows="3"></textarea></div>
+          </div>
+          <div class="row2">
+            <div class="field"><label for="p-tag-ru" data-i18n="p_tag_ru">Метка (RU)</label><input id="p-tag-ru" type="text"></div>
+            <div class="field"><label for="p-tag-en" data-i18n="p_tag_en">Метка (EN)</label><input id="p-tag-en" type="text"></div>
+          </div>
+          <span class="err" id="p-err" role="alert"></span>
+          <div class="btnrow">
+            <button class="btn btn--sm btn--accent" type="submit" data-i18n="p_save">Сохранить</button>
+            <button class="btn btn--sm btn--light" type="button" id="p-cancel" data-i18n="p_cancel">Отмена</button>
+          </div>
+        </form>
+        <div id="p-list" class="list"></div>
       </section>
-      <section class="panel" id="panel-settings">
-        <h2 data-i18n="d_set_empty">Настройки пока недоступны</h2>
-        <p data-i18n="d_set_hint">Здесь появятся настройки сайта и учётной записи.</p>
+
+      <section class="tab" id="tab-settings" aria-labelledby="h-settings">
+        <div class="tab__head"><h2 id="h-settings" data-i18n="s_title">Настройки</h2>
+          <div class="btnrow">
+            <button class="btn btn--sm btn--navy" type="button" id="s-export" data-i18n="s_export">Экспорт</button>
+            <button class="btn btn--sm btn--light" type="button" id="s-reset" data-i18n="s_reset">Сбросить</button>
+          </div></div>
+        <form class="panelform" id="s-form" novalidate>
+          <div class="row2">
+            <div class="field"><label for="s-email" data-i18n="s_email">Email</label><input id="s-email" type="email"></div>
+            <div class="field"><label for="s-phone" data-i18n="s_phone">Телефон</label><input id="s-phone" type="text"></div>
+          </div>
+          <div class="field"><label for="s-tg" data-i18n="s_tg">Telegram</label><input id="s-tg" type="url"></div>
+          <div class="row2">
+            <div class="field"><label for="s-addr-ru" data-i18n="s_addr_ru">Адрес (RU)</label><input id="s-addr-ru" type="text"></div>
+            <div class="field"><label for="s-addr-en" data-i18n="s_addr_en">Адрес (EN)</label><input id="s-addr-en" type="text"></div>
+          </div>
+          <div class="row2">
+            <div class="field"><label for="s-ht-ru" data-i18n="s_hero_t_ru">Заголовок (RU)</label><textarea id="s-ht-ru" rows="3"></textarea></div>
+            <div class="field"><label for="s-ht-en" data-i18n="s_hero_t_en">Заголовок (EN)</label><textarea id="s-ht-en" rows="3"></textarea></div>
+          </div>
+          <div class="row2">
+            <div class="field"><label for="s-hs-ru" data-i18n="s_hero_s_ru">Подзаголовок (RU)</label><textarea id="s-hs-ru" rows="3"></textarea></div>
+            <div class="field"><label for="s-hs-en" data-i18n="s_hero_s_en">Подзаголовок (EN)</label><textarea id="s-hs-en" rows="3"></textarea></div>
+          </div>
+          <h3 data-i18n="s_testi">Отзывы</h3>
+          <div id="s-testi"></div>
+          <div class="btnrow">
+            <button class="btn btn--sm btn--light" type="button" id="s-t-add" data-i18n="s_t_add">Добавить отзыв</button>
+          </div>
+          <span class="err" id="s-err" role="alert"></span>
+          <div class="btnrow" style="margin-top:16px">
+            <button class="btn btn--sm btn--accent" type="submit" data-i18n="s_save">Сохранить</button>
+          </div>
+        </form>
       </section>
     </main>
   </div>
   <script src="../js/i18n.js"></script>
+  <script src="../js/i18n-admin.js"></script>
+  <script src="../js/data.js"></script>
+  <script src="../js/admin-auth.js"></script>
   <script src="../js/admin.js"></script>
 </body>
 </html>
